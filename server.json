@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.siliconfloor/silicon-floor",
+  "title": "Silicon Floor",
+  "description": "Who's buying AI stocks, what insiders sell, who grows fastest: answers from SEC filings.",
+  "version": "1.0.1",
+  "websiteUrl": "https://siliconfloor.com/docs/mcp",
+  "icons": [
+    {
+      "src": "https://siliconfloor.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://siliconfloor.com/mcp"
+    }
+  ]
+}

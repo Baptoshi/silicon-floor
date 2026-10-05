@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "siliconfloor": { "type": "http", "url": "https://siliconfloor.com/mcp" }
+  }
+}
