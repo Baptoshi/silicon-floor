@@ -11,6 +11,9 @@ their figures from primary sources: SEC XBRL filings, Forms 13F, 13D/G, 3/4/5 an
 which tool answers which question, how to chain them, and how to report what they return without overstating it.
 
 All tools are read-only and need no key. The full list of tools and parameters is in `references/tools.md`.
+They come from the Silicon Floor MCP server at `https://siliconfloor.com/mcp` (Streamable HTTP, no account): if they
+are missing, ask the user to add that address as a connector — in Claude Code,
+`claude mcp add --transport http siliconfloor https://siliconfloor.com/mcp`.
 
 ## When to use it
 
