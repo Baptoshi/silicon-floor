@@ -34,6 +34,7 @@ check with `list_companies` and say plainly when a company is not covered instea
 | Which companies meet criteria (growth, margins, valuation, size, trend, segment) | `screen_companies` |
 | Who owns the company, insiders, funds; who sold, trimmed, bought or exited (every declared move); how ownership changed quarter by quarter since 2019, and since when each fund holds it | `get_ownership` |
 | What a fund, an investor or a person holds (Elon Musk, Jensen Huang): each stake broken down; what a fund declared each quarter since 2019; largest holders, buyers and sellers, sector rotation | `get_holders` |
+| Which manager's AI picks did best (last quarter, 1, 3 or 5 years) and how to follow it | `get_holders` (`list: 'performance'`, then `holder`) |
 | Recent SEC filings, earnings, 8-K items, insider trades | `get_filings` |
 | What changed since a date (filings, restatements, ownership declarations, signals) | `what_changed` |
 | Dividend: does it pay, how much, is it covered; highest yields in the sector | `get_dividends` |
@@ -68,6 +69,13 @@ the start of that history at least, not bought that quarter.
 **Who sold, who bought.** `get_ownership` returns `moves`: the quarter's 13F counts with the largest sales and buys, every
 Schedule 13D/G of the period with its nature, and insiders since the snapshot. For the complete list, call it again with
 `moves: "sales"` (every reduction and exit, largest first), `"exits"`, `"buys"` or `"all"`, paging with `movesOffset`.
+
+**Best-performing managers, and following one.** `get_holders` with `list: 'performance'` (`period`: `quarter`,
+`year`, `3y`, `5y`; `order`: `best` or `worst`) ranks active managers by the return of the AI-stock portfolio each
+declared at the start of every quarter, held unchanged to its end, against SMH. Then `get_holders` with the manager's
+`holder` for its quarters and rank (`performance`) and `follow`: its page and an Atom feed of its filings. Say what the
+number is — the performance of its declared AI picks, not of its funds: 13F filings do not show trades within a
+quarter, cash, shorts or other stocks — and never present the change in declared value (`history`) as performance.
 
 **What a person really holds.** `get_holders` with the person's name: `breakdown` splits each stake into the shares
 held (and how: own name, trusts, companies), restricted ("bonus") shares, options (exercise price, expiry) and other
@@ -133,6 +141,9 @@ than asserting the number on your own authority.
   note that TSMC's figures are a fiscal year or unaudited quarterly releases, in New Taiwan dollars.
 - "What changed in AI stocks this week?" → `what_changed`: earnings, material agreements, restatements, large insider
   purchases and new stakes above 5%, each dated and linked to its filing.
+- "Which fund's AI picks did best last quarter, and how do I follow it?" → `get_holders` (`list: 'performance'`): the
+  top managers with their return against SMH and their largest positions; then `get_holders` with the first one's
+  `holder` for its quarters, rank and `follow` (page and RSS feed); say it is the return of its declared AI picks.
 - "How much of SpaceX does Elon Musk own?" → `get_holders` ("Elon Musk"): the shares held per the Form 4 and the
   larger figure of the Schedule 13G, broken down into shares held through trusts, restricted "bonus" shares and options
   with their exercise price and expiry; link `https://siliconfloor.com/holders/elon-r-musk`.

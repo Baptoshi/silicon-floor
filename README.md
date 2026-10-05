@@ -16,6 +16,8 @@ code is not in this repository.
 
 - **Who's buying, who's selling?** Funds, insiders and big shareholders, from their own 13F, 13D/G and Form 4 filings.
 - **What does the CEO really own?** Shares, restricted stock and options, broken down filing by filing.
+- **Whose AI picks did best?** Funds ranked on what the AI stocks in their 13F returned, quarter after quarter, against
+  SMH. Then follow one: every fund and big shareholder has an RSS feed of their filings.
 - **Is it really growing?** Revenue, margins and cash flow exactly as filed: 12 quarters or 6 years.
 - **Is it cheap or expensive?** Companies side by side, or all 220 screened on growth, margins and valuation.
 - **Are short sellers piling in?** FINRA short interest, every two weeks.
