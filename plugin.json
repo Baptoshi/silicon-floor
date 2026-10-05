@@ -1,16 +1,11 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "silicon-floor",
-  "displayName": "Silicon Floor",
   "version": "1.2.0",
   "description": "Who's buying NVIDIA? What did the CEO just sell? Which chipmakers are growing fastest? Answers straight from SEC filings, every number linked to its source.",
   "author": { "name": "Silicon Floor", "url": "https://siliconfloor.com" },
   "homepage": "https://siliconfloor.com/docs/mcp",
   "repository": "https://github.com/Baptoshi/silicon-floor",
   "license": "MIT",
-  "keywords": ["finance", "stocks", "sec", "semiconductors", "ai", "mcp"],
-  "icon": "./assets/icon.png",
-  "documentationUrl": "https://siliconfloor.com/docs/mcp",
-  "supportUrl": "https://siliconfloor.com/about",
-  "privacyPolicyUrl": "https://siliconfloor.com/terms#privacy",
-  "termsOfServiceUrl": "https://siliconfloor.com/terms"
+  "keywords": ["finance", "stocks", "sec", "semiconductors", "ai", "mcp"]
 }

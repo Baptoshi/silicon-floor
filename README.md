@@ -9,8 +9,8 @@ Ask your AI assistant, and get the answer straight from SEC filings, every numbe
 [siliconfloor.com](https://siliconfloor.com) · [Documentation](https://siliconfloor.com/docs/mcp) · MCP server: `https://siliconfloor.com/mcp`
 
 This repository holds what you need to plug Silicon Floor into an assistant: the connector settings, a Claude Code
-plugin, a Gemini CLI extension and a research skill. The server itself runs at `https://siliconfloor.com/mcp`; its
-code is not in this repository.
+plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill. The server itself runs at
+`https://siliconfloor.com/mcp`; its code is not in this repository.
 
 ## What you can ask
 
@@ -45,10 +45,24 @@ or the server alone:
 claude mcp add --transport http siliconfloor https://siliconfloor.com/mcp
 ```
 
+**GitHub Copilot CLI**, as a plugin (server and research skill):
+
+```
+copilot plugin marketplace add Baptoshi/silicon-floor
+copilot plugin install silicon-floor@siliconfloor
+```
+
 **Gemini CLI**:
 
 ```
 gemini extensions install https://github.com/Baptoshi/silicon-floor
+```
+
+**The research skill alone**, for any agent that supports [Agent Skills](https://agentskills.io), via
+[skills.sh](https://skills.sh). It uses the MCP server, so add the server to the same client too:
+
+```
+npx skills add Baptoshi/silicon-floor
 ```
 
 **ChatGPT**: turn on developer mode in Settings (Security and login), then open Plugins, click +, name it
@@ -89,6 +103,7 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 | Path | For |
 |---|---|
 | `.claude-plugin/`, `.mcp.json` | Claude Code plugin and marketplace |
+| `plugin.json`, `mcp.json` | [Agent Plugins](https://agent-plugins.org) manifest: GitHub Copilot CLI and other Agent Plugins clients |
 | `skills/silicon-floor-research/` | Research skill: which tool answers what, and how to report it without overstating it |
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI extension |
 | `server.json` | Official MCP Registry entry |
