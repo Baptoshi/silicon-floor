@@ -3,8 +3,8 @@
 # Silicon Floor
 
 **Who's buying NVIDIA? What did the CEO just sell? Which chipmakers are growing fastest?**
-Ask your AI assistant, and get the answer straight from SEC filings, every number linked to its source.
-220 AI and semiconductor stocks. Free, no account, no API key.
+Follow the AI stock market from your AI assistant: 220 AI and semiconductor stocks, their news, the sector's market
+cap, dividends, and who's buying or selling, with every SEC figure linked to its filing. Free, no account, no API key.
 
 [siliconfloor.com](https://siliconfloor.com) · [Documentation](https://siliconfloor.com/docs/mcp) · MCP server: `https://siliconfloor.com/mcp`
 
@@ -18,9 +18,13 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
 - **What does the CEO really own?** Shares, restricted stock and options, broken down filing by filing.
 - **Whose AI picks did best?** Funds ranked on what the AI stocks in their 13F returned, quarter after quarter, against
   SMH. Then follow one: every fund and big shareholder has an RSS feed of their filings.
+- **How big is the AI trade?** The market cap of the whole sector, split between chips, cloud, power and the rest, and
+  each company's weight in it, day by day.
+- **Which ones pay a dividend?** Yield, growth, and how well each payout is covered.
 - **Is it really growing?** Revenue, margins and cash flow exactly as filed: 12 quarters or 6 years.
 - **Is it cheap or expensive?** Companies side by side, or all 220 screened on growth, margins and valuation.
 - **Are short sellers piling in?** FINRA short interest, every two weeks.
+- **What's the news?** The latest AI headlines, tagged by company.
 - **What changed this week?** Earnings, insider buys, new 5% stakes, restatements, ranked by what matters.
 
 Every number carries its date and its source, and SEC figures link to the filing itself. Missing data shows up as
