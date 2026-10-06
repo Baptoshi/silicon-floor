@@ -15,6 +15,10 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
 ## What you can ask
 
 - **Who's buying, who's selling?** Funds, insiders and big shareholders, from their own 13F, 13D/G and Form 4 filings.
+- **What did insiders sell this quarter?** CEO, founder and director sales and purchases across the sector, quarter by
+  quarter: the biggest sellers and buyers, what they still hold, and the filing behind each.
+- **What did hedge funds buy last quarter?** Each quarter's 13F filings, read in full: where the money went by sector, the
+  most bought and sold stocks, the biggest moves of named funds.
 - **What does the CEO really own?** Shares, restricted stock and options, broken down filing by filing.
 - **Whose AI picks did best?** Funds ranked on what the AI stocks in their 13F returned, quarter after quarter, against
   SMH. Then follow one: every fund and big shareholder has an RSS feed of their filings.
@@ -97,9 +101,10 @@ Any other MCP client: Streamable HTTP at `https://siliconfloor.com/mcp`, no auth
 
 ## Tools
 
-Sixteen read-only tools: `list_companies`, `get_company`, `get_financials`, `get_figure_history`,
-`compare_companies`, `screen_companies`, `get_ownership`, `get_holders`, `get_filings`, `what_changed`,
-`get_dividends`, `get_market_overview`, `get_market`, `get_signals`, `get_price_history`, `get_news`.
+Eighteen read-only tools: `list_companies`, `get_company`, `get_financials`, `get_figure_history`,
+`compare_companies`, `screen_companies`, `get_ownership`, `get_holders`, `get_fund_flows`, `get_insider_trading`,
+`get_filings`, `what_changed`, `get_dividends`, `get_market_overview`, `get_market`, `get_signals`, `get_price_history`,
+`get_news`.
 Their full reference is in [`skills/silicon-floor-research/references/tools.md`](skills/silicon-floor-research/references/tools.md).
 
 ## What's in this repository
