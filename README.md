@@ -2,9 +2,10 @@
 
 # Silicon Floor
 
-**Who's buying NVIDIA? What did the CEO just sell? Which chipmakers are growing fastest?**
-Follow the AI stock market from your AI assistant: 220 AI and semiconductor stocks, their news, the sector's market
-cap, dividends, and who's buying or selling, with every SEC figure linked to its filing. Free, no account, no API key.
+**Who owns AI stocks, who's buying, who's selling — every answer sourced.**
+The research terminal for your AI agent: who owns AI and semiconductor stocks, what insiders and funds buy and sell,
+financials as filed, short interest, dividends and the sector's market cap, with every SEC figure linked to its
+filing. Free, no account, no API key.
 
 [siliconfloor.com](https://siliconfloor.com) · [Documentation](https://siliconfloor.com/docs/mcp) · MCP server: `https://siliconfloor.com/mcp`
 
@@ -26,7 +27,7 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
   each company's weight in it, day by day.
 - **Which ones pay a dividend?** Yield, growth, and how well each payout is covered.
 - **Is it really growing?** Revenue, margins and cash flow exactly as filed: 12 quarters or 6 years.
-- **Is it cheap or expensive?** Companies side by side, or all 220 screened on growth, margins and valuation.
+- **Is it cheap or expensive?** Companies side by side, or the whole sector screened on growth, margins and valuation.
 - **Are short sellers piling in?** FINRA short interest, every two weeks.
 - **What's the news?** The latest AI headlines, tagged by company.
 - **What changed this week?** Earnings, insider buys, new 5% stakes, restatements, ranked by what matters.

@@ -1,12 +1,12 @@
 {
   "name": "siliconfloor",
-  "description": "Silicon Floor: research AI and semiconductor stocks from SEC filings.",
+  "description": "Silicon Floor: the research terminal for AI agents on AI and semiconductor stocks.",
   "owner": { "name": "Silicon Floor", "email": "contact@siliconfloor.com" },
   "plugins": [
     {
       "name": "silicon-floor",
       "source": "./",
-      "description": "The Silicon Floor MCP server and its research skill: who owns AI stocks, financials as filed, insider trades, FINRA short interest."
+      "description": "The Silicon Floor MCP server and its research skill: who owns AI stocks, who's buying and selling, financials as filed, insider trades, FINRA short interest."
     }
   ]
 }

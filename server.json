@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.siliconfloor/silicon-floor",
   "title": "Silicon Floor",
-  "description": "Who's buying AI stocks, what insiders sell, who grows fastest: answers from SEC filings.",
-  "version": "1.0.1",
+  "description": "Terminal for AI agents on AI & chip stocks: who owns, buys, sells — every figure from SEC filings.",
+  "version": "1.0.2",
   "websiteUrl": "https://siliconfloor.com/docs/mcp",
   "icons": [
     {

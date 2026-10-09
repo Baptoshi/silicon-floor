@@ -1,7 +1,7 @@
 {
   "name": "silicon-floor",
-  "version": "1.3.0",
-  "description": "Who's buying NVIDIA? What did the CEO just sell? Which chipmakers are growing fastest? Answers straight from SEC filings, every number linked to its source.",
+  "version": "1.4.0",
+  "description": "A research terminal for AI agents on AI and chip stocks: who owns them, who's buying and selling, and the numbers behind them — every figure linked to its SEC filing.",
   "mcpServers": {
     "siliconfloor": { "httpUrl": "https://siliconfloor.com/mcp" }
   },

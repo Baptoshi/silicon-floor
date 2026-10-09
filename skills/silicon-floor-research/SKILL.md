@@ -5,9 +5,10 @@ description: Research listed AI and semiconductor stocks with the Silicon Floor 
 
 # Silicon Floor stock research
 
-Silicon Floor tracks about 220 listed companies across the AI and semiconductor supply chain (chips, memory,
-equipment, optics and networking, servers, power and cooling, neoclouds, AI software, the cloud giants) and rebuilds
-their figures from primary sources: SEC XBRL filings, Forms 13F, 13D/G, 3/4/5 and N-PORT, and FINRA. This skill says
+Silicon Floor is a research terminal for AI agents. It answers who owns the listed companies of the AI and
+semiconductor supply chain (chips, memory, equipment, optics and networking, servers, power and cooling, neoclouds,
+AI software, the cloud giants), who is buying and selling them, and what their filed numbers say — rebuilt from
+primary sources: SEC XBRL filings, Forms 13F, 13D/G, 3/4/5 and N-PORT, and FINRA. This skill says
 which tool answers which question, how to chain them, and how to report what they return without overstating it.
 
 All tools are read-only and need no key. The full list of tools and parameters is in `references/tools.md`.

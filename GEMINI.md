@@ -1,7 +1,8 @@
 # Silicon Floor
 
-The `siliconfloor` MCP server answers questions about about 220 AI and semiconductor stocks from primary sources: SEC
-filings (financial statements in XBRL, Forms 13F, 13D/G, 3/4/5, N-PORT) and FINRA short interest.
+The `siliconfloor` MCP server is a research terminal for AI agents on AI and semiconductor stocks: who owns them, who
+is buying and selling, what their filed numbers say — from primary sources: SEC filings (financial statements in XBRL,
+Forms 13F, 13D/G, 3/4/5, N-PORT) and FINRA short interest.
 
 When you use it:
 
