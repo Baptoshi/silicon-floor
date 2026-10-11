@@ -9,6 +9,11 @@ filing. Free, no account, no API key.
 
 [siliconfloor.com](https://siliconfloor.com) · [Documentation](https://siliconfloor.com/docs/mcp) · MCP server: `https://siliconfloor.com/mcp`
 
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Silicon_Floor-0098FF?style=flat-square)](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%257B%2522name%2522%253A%2522siliconfloor%2522%252C%2522type%2522%253A%2522http%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fsiliconfloor.com%252Fmcp%2522%257D)
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=siliconfloor&config=eyJ1cmwiOiJodHRwczovL3NpbGljb25mbG9vci5jb20vbWNwIn0%3D)
+[![Add to LM Studio](https://files.lmstudio.ai/deeplink/mcp-install-light.svg)](https://lmstudio.ai/install-mcp?name=siliconfloor&config=eyJ1cmwiOiJodHRwczovL3NpbGljb25mbG9vci5jb20vbWNwIn0=)
+[![Install in goose](https://block.github.io/goose/img/extension-install-dark.svg)](https://block.github.io/goose/extension?cmd=npx&arg=-y&arg=siliconfloor-mcp&id=silicon-floor&name=Silicon%20Floor&description=Who%20owns%20AI%20and%20chip%20stocks%2C%20who%20is%20buying%20and%20selling%2C%20and%20what%20their%20filed%20numbers%20say)
+
 This repository holds what you need to plug Silicon Floor into an assistant: the connector settings, a Claude Code
 plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill. The server itself runs at
 `https://siliconfloor.com/mcp`; its code is not in this repository.
