@@ -24,6 +24,21 @@ Add this to `cline_mcp_settings.json`:
 }
 ```
 
+## Clients that can only run a command
+
+Some clients will not take a URL. For those, a bridge on npm forwards stdio to the same hosted server — nothing is
+installed permanently, and there is still no key:
+
+```json
+{
+  "mcpServers": {
+    "siliconfloor": { "command": "npx", "args": ["-y", "siliconfloor-mcp"] }
+  }
+}
+```
+
+Prefer the URL whenever the client accepts one: the bridge is one more process for the same answers.
+
 ## Other clients
 
 Any client that speaks remote MCP over HTTP takes the same URL:

@@ -1,0 +1,45 @@
+{
+  "name": "siliconfloor-mcp",
+  "version": "1.4.0",
+  "mcpName": "com.siliconfloor/silicon-floor",
+  "description": "Who owns AI and chip stocks, who's buying and selling — every figure from SEC filings, cited. Bridges a stdio MCP client to the hosted Silicon Floor server.",
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "finance",
+    "stocks",
+    "sec",
+    "edgar",
+    "13f",
+    "insider-trading",
+    "short-interest",
+    "semiconductors",
+    "ai",
+    "research"
+  ],
+  "homepage": "https://siliconfloor.com/docs/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baptoshi/silicon-floor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Baptoshi/silicon-floor/issues"
+  },
+  "author": "Silicon Floor (https://siliconfloor.com)",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "siliconfloor-mcp": "bin/siliconfloor-mcp.mjs"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

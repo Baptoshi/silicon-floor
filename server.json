@@ -3,7 +3,7 @@
   "name": "com.siliconfloor/silicon-floor",
   "title": "Silicon Floor",
   "description": "Terminal for AI agents on AI & chip stocks: who owns, buys, sells — every figure from SEC filings.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://siliconfloor.com/docs/mcp",
   "icons": [
     {
@@ -18,6 +18,16 @@
     {
       "type": "streamable-http",
       "url": "https://siliconfloor.com/mcp"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "siliconfloor-mcp",
+      "version": "1.4.0",
+      "transport": {
+        "type": "stdio"
+      }
     }
   ]
 }

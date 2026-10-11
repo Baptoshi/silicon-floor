@@ -97,6 +97,17 @@ Silicon Floor and enter `https://siliconfloor.com/mcp` as a public endpoint.
 }
 ```
 
+**A client that only runs commands**, through the bridge on npm — it forwards stdio to the same hosted server,
+nothing is installed and no key is needed:
+
+```json
+{
+  "mcpServers": {
+    "siliconfloor": { "command": "npx", "args": ["-y", "siliconfloor-mcp"] }
+  }
+}
+```
+
 Any other MCP client: Streamable HTTP at `https://siliconfloor.com/mcp`, no authentication. Also listed in the
 [official MCP Registry](https://registry.modelcontextprotocol.io) as `com.siliconfloor/silicon-floor`.
 
@@ -117,6 +128,7 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 | `skills/silicon-floor-research/` | Research skill: which tool answers what, and how to report it without overstating it |
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI extension |
 | `server.json` | Official MCP Registry entry |
+| `bin/`, `package.json` | `siliconfloor-mcp` on npm: a stdio bridge to the hosted server, for clients that expect a command. Zero dependencies; `npm test` covers it |
 
 ## Data and terms
 
