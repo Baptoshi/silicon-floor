@@ -33,7 +33,8 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
 - **Which ones pay a dividend?** Yield, growth, and how well each payout is covered.
 - **Is it really growing?** Revenue, margins and cash flow exactly as filed: 12 quarters or 6 years.
 - **Is it cheap or expensive?** Companies side by side, or the whole sector screened on growth, margins and valuation.
-- **Are short sellers piling in?** FINRA short interest, every two weeks.
+- **Are short sellers piling in?** FINRA short interest every two weeks, and the short float on a float counted from
+  SEC filings, every holder taken out named.
 - **What's the news?** The latest AI headlines, tagged by company.
 - **What changed this week?** Earnings, insider buys, new 5% stakes, restatements, ranked by what matters.
 
