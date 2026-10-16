@@ -13,7 +13,7 @@ Lists the AI and semiconductor companies tracked by Silicon Floor, with ticker, 
 
 ## get_company — Company snapshot
 
-Returns one company's current snapshot: price with its market session (open or closed, last close, next open; `listedOn` for a recent listing), performance, 52-week range, trend, fundamentals from the company's SEC XBRL filings, balance sheet (cash, operating cash flow, runway, share count and dilution), risk (beta against the sector with its r², historical volatility and its one-year rank), FINRA short interest (latest settlement, short float on a float counted from SEC filings, one year of history), FINRA short volume, and the company's SEC profile with the description from its latest annual report. Every figure carries the date it holds for. Use it when the user asks about one company's price, market cap, valuation, fundamentals or risk.
+Returns one company's current snapshot: price with its market session (open or closed, last close, next open; `listedOn` for a recent listing), performance, 52-week range, trend, fundamentals from the company's SEC XBRL filings, balance sheet (cash, debt as the filed balance sheet presents it — each line, with the page on sec.gov —, operating cash flow, runway, share count and dilution), risk (beta against the sector with its r², historical volatility and its one-year rank), FINRA short interest (latest settlement, short float on a float counted from SEC filings, one year of history), FINRA short volume, and the company's SEC profile with the description from its latest annual report. Every figure carries the date it holds for. Use it when the user asks about one company's price, market cap, valuation, fundamentals or risk.
 
 | Parameter | Required | Meaning |
 |---|---|---|
