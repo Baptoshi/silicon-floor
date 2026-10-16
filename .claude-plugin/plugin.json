@@ -1,7 +1,7 @@
 {
   "name": "silicon-floor",
   "displayName": "Silicon Floor",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A research terminal for AI agents on AI and chip stocks: who owns them, who's buying and selling, and the numbers behind them — every figure linked to its SEC filing.",
   "author": { "name": "Silicon Floor", "url": "https://siliconfloor.com" },
   "homepage": "https://siliconfloor.com/docs/mcp",

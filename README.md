@@ -135,6 +135,7 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI extension |
 | `server.json` | Official MCP Registry entry |
 | `bin/`, `package.json` | `siliconfloor-mcp` on npm: a stdio bridge to the hosted server, for clients that expect a command. Zero dependencies; `npm test` covers it |
+| `Dockerfile`, `glama.json` | The same bridge as a container, for directories that start a server to read its tools (Glama). It holds no data: every answer comes from the hosted server |
 
 ## Data and terms
 
