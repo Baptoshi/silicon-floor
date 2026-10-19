@@ -13,7 +13,7 @@ Lists the AI and semiconductor companies tracked by Silicon Floor, with ticker, 
 
 ## get_company — Company snapshot
 
-Returns one company's current snapshot: price with its market session (open or closed, last close, next open; `listedOn` for a recent listing), performance, 52-week range, trend, fundamentals from the company's SEC XBRL filings, balance sheet (cash, debt as the filed balance sheet presents it — each line, with the page on sec.gov —, operating cash flow, runway, share count and dilution), risk (beta against the sector with its r², historical volatility and its one-year rank), FINRA short interest (latest settlement, short float on a float counted from SEC filings, one year of history), FINRA short volume, and the company's SEC profile with the description from its latest annual report. Every figure carries the date it holds for. Use it when the user asks about one company's price, market cap, valuation, fundamentals or risk.
+Returns one company's current snapshot: price with its market session (open or closed, last close, next open; `listedOn` for a recent listing), performance, 52-week range, trend, fundamentals from the company's SEC XBRL filings, balance sheet (cash, debt as the filed balance sheet presents it — each line, with the page on sec.gov —, the notes, loans and share offerings filed since that balance sheet, operating cash flow, runway, share count and dilution), risk (beta against the sector with its r², historical volatility and its one-year rank), FINRA short interest (latest settlement, short float on a float counted from SEC filings, one year of history), FINRA short volume, and the company's SEC profile with the description from its latest annual report. Every figure carries the date it holds for. Use it when the user asks about one company's price, market cap, valuation, fundamentals or risk.
 
 | Parameter | Required | Meaning |
 |---|---|---|
@@ -57,12 +57,13 @@ Returns the shareholders of one company from SEC filings: institutional managers
 
 ## get_filings — Recent SEC filings of a company
 
-Returns a company's recent SEC filings, classified (earnings, 8-K items, insider purchases or sales, offerings…), each with its acceptance time, accession number and sec.gov link, plus a 90-day summary of insider purchases and sales. Insider filings show amounts and the filer's role, not the person's name. Filings are dated by acceptance time, not filing date. Use it when the user asks what a company has filed or announced recently.
+Returns a company's recent SEC filings, classified (earnings, 8-K items, notes and loans, share offerings, prospectuses…), each with its acceptance time, accession number and sec.gov link; a financing filing carries what it says — amount, coupon, maturity, status, the sentence it comes from. Insider filings (Forms 3, 4, 5 and 144) are left out unless asked for: their purchases and sales are summed over 90 days in `insiderFlow90d`, with the filer's role, not the person's name. Filings are dated by acceptance time, not filing date. Use it when the user asks what a company has filed, announced, borrowed or raised recently.
 
 | Parameter | Required | Meaning |
 |---|---|---|
 | `symbol` | yes | Ticker or company name, e.g. NVDA, AMD, ASML, 'nvidia', 'taiwan semiconductor'. Case-insensitive. |
 | `limit` | no | Filings to return (default 15, max 50). |
+| `insiders` | no | Include insider filings (Forms 3, 4, 5 and 144), left out by default. |
 
 ## get_dividends — Dividend data
 
