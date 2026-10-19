@@ -12,7 +12,7 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
-const BIN = join(dirname(fileURLToPath(import.meta.url)), "..", "bin", "siliconfloor-mcp.mjs");
+const BIN = join(dirname(fileURLToPath(import.meta.url)), "..", "bridge", "siliconfloor-mcp.mjs");
 
 /** A stand-in for the hosted server. `mode` decides how it answers, so each failure can be reproduced. */
 function standIn(mode = "json") {

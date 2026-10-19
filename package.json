@@ -29,10 +29,10 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "siliconfloor-mcp": "bin/siliconfloor-mcp.mjs"
+    "siliconfloor-mcp": "bridge/siliconfloor-mcp.mjs"
   },
   "files": [
-    "bin/",
+    "bridge/",
     "README.md",
     "LICENSE"
   ],

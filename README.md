@@ -134,7 +134,7 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 | `skills/silicon-floor-research/` | Research skill: which tool answers what, and how to report it without overstating it |
 | `gemini-extension.json`, `GEMINI.md` | Gemini CLI extension |
 | `server.json` | Official MCP Registry entry |
-| `bin/`, `package.json` | `siliconfloor-mcp` on npm: a stdio bridge to the hosted server, for clients that expect a command. Zero dependencies; `npm test` covers it |
+| `bridge/`, `package.json` | `siliconfloor-mcp` on npm: a stdio bridge to the hosted server, for clients that expect a command. Zero dependencies; `npm test` covers it. Kept out of `bin/`, which Claude Code would put on its Bash `PATH` and which claude.ai and Cowork refuse to install |
 | `Dockerfile`, `glama.json` | The same bridge as a container, for directories that start a server to read its tools (Glama). It holds no data: every answer comes from the hosted server |
 
 ## Data and terms

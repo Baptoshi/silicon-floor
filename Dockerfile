@@ -5,6 +5,6 @@
 FROM node:22-alpine
 WORKDIR /app
 COPY package.json ./
-COPY bin ./bin
+COPY bridge ./bridge
 USER node
-ENTRYPOINT ["node", "bin/siliconfloor-mcp.mjs"]
+ENTRYPOINT ["node", "bridge/siliconfloor-mcp.mjs"]
