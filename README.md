@@ -35,6 +35,16 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
 - **Is it cheap or expensive?** Companies side by side, or the whole sector screened on growth, margins and valuation.
 - **Are short sellers piling in?** FINRA short interest every two weeks, and the short float on a float counted from
   SEC filings, every holder taken out named.
+- **Who buys from whom, who lends to whom?** The customers companies name, the contracts their filings disclose (value,
+  term, megawatts), who acquired whom, and the banks behind each credit facility, with when it was signed and when it
+  ends, as filed.
+- **What is a private AI company worth before its IPO?** Anthropic's S-1 read in full: every funding round per common
+  share of today, the implied value, revenue quarter by quarter, what it has committed to spend with each cloud and chip
+  supplier, and what Amazon and Google hold.
+- **Where does the revenue come from?** By segment, region and product, the customers a company depends on, and what it
+  guided for against what it then reported.
+- **What does it owe?** Debt as the balance sheet presents it, instrument by instrument with rates and maturities, and
+  every note, loan and share sale filed since.
 - **What's the news?** The latest AI headlines, tagged by company.
 - **What changed this week?** Earnings, insider buys, new 5% stakes, restatements, ranked by what matters.
 
@@ -119,10 +129,10 @@ Any other MCP client: Streamable HTTP at `https://siliconfloor.com/mcp`, no auth
 
 ## Tools
 
-Eighteen read-only tools: `list_companies`, `get_company`, `get_financials`, `get_figure_history`,
-`compare_companies`, `screen_companies`, `get_ownership`, `get_holders`, `get_fund_flows`, `get_insider_trading`,
-`get_filings`, `what_changed`, `get_dividends`, `get_market_overview`, `get_market`, `get_signals`, `get_price_history`,
-`get_news`.
+Nineteen read-only tools: `list_companies`, `get_company`, `get_financials`, `get_figure_history`,
+`compare_companies`, `screen_companies`, `get_ownership`, `get_holders`, `get_relationships`, `get_fund_flows`,
+`get_insider_trading`, `get_filings`, `what_changed`, `get_dividends`, `get_market_overview`, `get_market`, `get_signals`,
+`get_price_history`, `get_news`.
 Their full reference is in [`skills/silicon-floor-research/references/tools.md`](skills/silicon-floor-research/references/tools.md).
 
 ## What's in this repository

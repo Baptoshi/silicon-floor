@@ -33,6 +33,10 @@ check with `list_companies` and say plainly when a company is not covered instea
 | Is this company tracked? What is its ticker? | `list_companies` (`query`, or `segment`) |
 | One company at a glance: price, trend, fundamentals, balance sheet, risk, short interest | `get_company` |
 | Income statement, balance sheet, cash flow over 12 quarters or 6 fiscal years | `get_financials` |
+| Revenue by segment, region or product; the customers a company depends on | `get_financials` (`statement: "breakdowns"`) |
+| What a company guides for next, how it did against its own guidance, when it reports next | `get_financials` (`statement: "outlook"`); `get_company` gives the latest guidance |
+| A private company that filed to go public (Anthropic): its funding rounds, implied value, capital, quarters, commitments to its suppliers, what Amazon and Google hold, fund marks | `get_company` (its name; `preIpo: true`) |
+| What a company owes: debt as the balance sheet shows it, instrument by instrument (rate, maturity), and what it borrowed or raised since | `get_company` (`debtComposition`, `financingSinceBalanceSheet`); `get_financials` |
 | One figure over time, with the filing behind each period and any restatement | `get_figure_history` |
 | Several companies side by side | `compare_companies` (2 to 12) |
 | Which companies meet criteria (growth, margins, valuation, size, trend, segment) | `screen_companies` |
@@ -41,6 +45,7 @@ check with `list_companies` and say plainly when a company is not covered instea
 | Which managers' declared AI picks returned the most (last quarter, 1, 3 or 5 years) and how to follow one | `get_holders` (`list: 'performance'`, then `holder`) |
 | What hedge funds and institutions bought and sold in AI stocks last quarter: net flows, by segment, most bought and sold, biggest moves, new big bets | `get_fund_flows` (`quarter`) |
 | What CEOs, founders and directors bought and sold this quarter: biggest sellers and buyers, what they still hold, by company and role, new insiders | `get_insider_trading` (`quarter`: `latest`, `current`, `q3-2026`) |
+| How companies, investors and people are connected: who holds whom, who buys from whom (the customers a company names, with their share of its revenue, and the contracts filings name, with their value, term and megawatts: `view: "value_chain"`), companies holding other companies, officers and directors, warrants — each link with its filings; private companies (Anthropic, OpenAI, Nscale) included | `get_relationships` (`center`, `depth`: 2 to walk one step further) |
 | Recent SEC filings, earnings, 8-K items, insider trades | `get_filings` |
 | What changed since a date (filings, restatements, ownership declarations, signals) | `what_changed` |
 | Dividend: does it pay, how much, is it covered; highest yields in the sector | `get_dividends` |
@@ -94,6 +99,46 @@ personal trades.
 **What a person holds.** `get_holders` with the person's name: `breakdown` splits each stake into the shares
 held (and how: own name, trusts, companies), restricted ("bonus") shares, options (exercise price, expiry) and other
 rights, each part with the filing it comes from; `insiderRoles` and `insiderFilings` give their Forms 3, 4 and 5.
+
+**What a company sells, where, and to whom.** `get_financials` with `statement: "breakdowns"`: `revenueBy` gives revenue by
+segment, geography and product as the company's own tables present it (each kept only when its lines add up to the
+total filed), quarter by quarter, with the report page behind each period; `customerConcentration` gives the customers it
+discloses with their share of revenue. A sub-line is part of the line above it: never add the two. "Customer A" is a
+customer the company does not name, and the same letter may be another customer in another report: never treat two
+reports' "Customer A" as the same company.
+
+**Who buys from whom.** `get_relationships` with `view: "value_chain"`: each named customer is a `customer_of` link from the
+customer to the company that names it in its 10-K or 10-Q, with `shareOfSupplierRevenue` (a fraction of the naming
+company's revenue, over `period`) — from either side: around Apple you get the companies that name Apple as a customer.
+Companies only name customers above 10% of their revenue, and often not by name: a missing link is not evidence that two
+companies do no business together. A `name:` node is a counterparty with no proven identity, never matched to a company
+by a similar name. Only relationships the filings still state come back by default: a customer the supplier's latest
+report no longer names, or a contract past its stated term, comes back with `status: "all"`, its `relationshipStatus`
+saying which (`not_restated`, `expired`) — say so rather than presenting it as current. A contract without a stated term
+stays current: a filing that stops repeating a contract does not end it. The customers
+of `get_financials` carry the same identity (`company`, the node id of `get_relationships`). **Who acquired whom** is in
+the same view: an `acquired` link goes from the buyer to what it acquired, whichever side filed it, and its `deals` say what changed hands (the company, a business of the seller, a stake), agreed
+or completed, the date and the full price when the filing states it — a price is never a part of the consideration, and
+an agreed deal is not a completed one. **Who lends to whom** too: a `lends_to` link goes from a lender, or the agent of a
+facility (`role`), to the company whose filing names it, with each `facilities` entry as filed (kind, status, amount) — a
+commitment or a draw, never a balance outstanding — and its life: `agreementDate`, the `margin` the 8-K states, `maturity`,
+`extensionOption`, `ended` or `extended` with the filing that says it; a lender whose facilities have all ended or matured
+is `expired`, left out by default. A bank appears under its group's house (`holder:jpmorgan`). An
+`invests_in` link with `instruments` is a named buyer of the company's shares, from the filing that sold them.
+
+**A company before its IPO.** `get_company` with its name (`preIpo: true`, `price: null`) reads its public prospectus
+and the funds that hold it. There is no market price: quote the last funding round's price per common share of today,
+carried until the next round, and say it is a round price. The implied value is that price times a share count the
+prospectus files, on two definitions (fully diluted, outstanding): name the one you quote. A `revenueEstimate` for the
+next quarter comes from rounded figures the prospectus states, never from a filed statement: say it is an estimate. What Amazon and Google hold is a floor
+rebuilt from the prospectus, and a fund's mark is that fund's own valuation, not a trade.
+
+**What a company expects.** `get_financials` with `statement: "outlook"`: `guidance` is the outlook of its latest earnings
+release in its own words (8-K exhibit 99.1; TSMC: its 6-K), each item with the period it targets, its basis (GAAP,
+non-GAAP, or null when the release does not say) and the sentence it comes from; `actualVsGuidance` sets each period's
+last guidance against what the company then filed — revenue, and gross margin and EPS on a GAAP basis only. It is the
+company's guidance, never analysts' consensus: do not call a gap a "beat" or a "miss" of expectations. `nextEarnings` is
+an estimate (the release of the same quarter a year earlier, plus 52 weeks), never a date the company announced: say so.
 
 **Daily or weekly brief.** `what_changed` (default: last 7 days, ranked by materiality) plus `get_market_overview`.
 If `what_changed` says the window is not complete, say which period it covers.
