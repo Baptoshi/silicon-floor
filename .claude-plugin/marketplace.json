@@ -6,7 +6,7 @@
     {
       "name": "silicon-floor",
       "source": "./",
-      "description": "The Silicon Floor MCP server and its research skill: who owns AI stocks, who's buying and selling, financials as filed, insider trades, FINRA short interest."
+      "description": "The Silicon Floor MCP server and its research skill: who owns AI stocks, who's buying and selling, financials as filed, insider trades, FINRA short interest, who buys from and lends to whom, and AI companies before their IPO."
     }
   ]
 }

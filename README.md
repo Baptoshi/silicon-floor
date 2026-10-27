@@ -38,9 +38,11 @@ plugin, a GitHub Copilot CLI plugin, a Gemini CLI extension and a research skill
 - **Who buys from whom, who lends to whom?** The customers companies name, the contracts their filings disclose (value,
   term, megawatts), who acquired whom, and the banks behind each credit facility, with when it was signed and when it
   ends, as filed.
-- **What is a private AI company worth before its IPO?** Anthropic's S-1 read in full: every funding round per common
-  share of today, the implied value, revenue quarter by quarter, what it has committed to spend with each cloud and chip
-  supplier, and what Amazon and Google hold.
+- **What is a private AI company worth before its IPO?** Anthropic's S-1 read in full, and served like a listed
+  company: every funding round per common share of today and the value it implies, its financial statements (quarters,
+  half years and audited years: revenue, cash, cash flow), who owns it (its principal stockholders, officers and
+  directors, and what Amazon and Google hold), what it has committed to spend with each cloud and chip supplier, and who
+  finances it — its credit facility and the notes Google, Amazon and Broadcom have agreed to buy.
 - **Where does the revenue come from?** By segment, region and product, the customers a company depends on, and what it
   guided for against what it then reported.
 - **What does it owe?** Debt as the balance sheet presents it, instrument by instrument with rates and maturities, and
@@ -149,7 +151,7 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 
 ## Data and terms
 
-Sources: SEC EDGAR (XBRL financial statements, Forms 13F, 13D/G, 3/4/5, N-PORT) and FINRA (short interest and
+Sources: SEC EDGAR (XBRL financial statements, IPO prospectuses, Forms 13F, 13D/G, 3/4/5, N-PORT) and FINRA (short interest and
 short-sale volume, republished with FINRA's permission). Silicon Floor is a tracking tool, not investment advice.
 [Terms and privacy](https://siliconfloor.com/terms) · contact@siliconfloor.com
 

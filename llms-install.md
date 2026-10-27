@@ -59,6 +59,6 @@ Call `list_companies`, then for example `get_ownership` with `symbol: "NVDA"`. E
 
 ## Optional skill
 
-`skills/silicon-floor-research/SKILL.md` in this repository tells an agent which tool to use for which question and how to read ownership ranges, fiscal-year figures and restated numbers.
+`skills/silicon-floor-research/SKILL.md` in this repository tells an agent which tool to use for which question and how to read ownership ranges, fiscal-year figures, restated numbers and the prospectus figures of a company before its IPO.
 
 Documentation: https://siliconfloor.com/docs/mcp
