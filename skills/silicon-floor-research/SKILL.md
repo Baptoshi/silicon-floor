@@ -1,14 +1,15 @@
 ---
 name: silicon-floor-research
-description: Research listed AI and semiconductor stocks with the Silicon Floor MCP tools and answer with dated, sourced figures — financial statements as filed with the SEC, who owns the shares (13F, 13D/G, insiders, funds), FINRA short interest, dividends, SEC filings, what changed since a date, and the sector as one market. Use for questions about chip, semiconductor, AI infrastructure, data-center, cloud or AI-software companies (NVIDIA, TSMC, Broadcom, AMD, Palantir…). Do not use to place trades, for crypto or companies outside the tracked universe, or to give personal investment advice.
+description: Research AI and semiconductor stocks with the Silicon Floor MCP tools and answer with dated, sourced figures — financial statements and debt as filed with the SEC, who owns the shares (13F, 13D/G, insiders, funds) and who moved, who buys from and lends to whom, guidance, FINRA short interest, dividends, SEC filings, what changed since a date, the sector as one market, and AI companies that filed to go public. Use for questions about chip, semiconductor, AI infrastructure, data-center, cloud or AI-software companies (NVIDIA, TSMC, Broadcom, AMD, Palantir, Anthropic…). Do not use to place trades, for crypto or companies outside the tracked universe, or to give personal investment advice.
 ---
 
 # Silicon Floor stock research
 
 Silicon Floor is a research terminal for AI agents. It answers who owns the listed companies of the AI and
 semiconductor supply chain (chips, memory, equipment, optics and networking, servers, power and cooling, neoclouds,
-AI software, the cloud giants), who is buying and selling them, and what their filed numbers say — rebuilt from
-primary sources: SEC XBRL filings, Forms 13F, 13D/G, 3/4/5 and N-PORT, and FINRA. This skill says
+AI software, the cloud giants), who is buying and selling them, who they buy from and borrow from, and what their
+filed numbers say — and the same for an AI company that has filed to go public — rebuilt from primary sources: SEC
+XBRL filings, 8-Ks and periodic reports, IPO prospectuses, Forms 13F, 13D/G, 3/4/5 and N-PORT, and FINRA. This skill says
 which tool answers which question, how to chain them, and how to report what they return without overstating it.
 
 All tools are read-only and need no key. The full list of tools and parameters is in `references/tools.md`.
@@ -19,7 +20,10 @@ are missing, ask the user to add that address as a connector — in Claude Code,
 ## When to use it
 
 - A question about one of these companies: price and performance, revenue, margins, earnings, balance sheet, cash
-  flow, valuation ratios, who owns it, insider activity, short interest, dividend, recent filings, news.
+  flow, debt and financings, guidance, valuation ratios, who owns it, insider activity, customers, suppliers and
+  lenders, short interest, dividend, recent filings, news.
+- A question about an AI company that has filed to go public (Anthropic): its funding rounds, implied value,
+  statements, stockholders and links.
 - A question about the sector: how AI or chip stocks are doing, which segment leads, what changed this week, which
   companies meet given criteria, what big funds bought or sold.
 
@@ -74,7 +78,9 @@ or a ratio between two currencies): they are not below the threshold, they canno
 `vanguard`, a name such as "Vanguard" or a person's name, or the `holder` value that `get_ownership`,
 `get_insider_trading` or `get_fund_flows` returns) or a
 list (`largest`, `buyers`, `sellers`, `declarants`, `individuals`). Give total declared ownership as the range it
-returns. For a trend, `get_ownership` returns `history` (every 13F quarter since the end of 2019: managers, shares,
+returns. Each holder's `type` says what filed its row (investment manager, company, person, broker-dealer) and, for a
+manager, its `style` (active, index, market_maker, wealth): an index fund's position follows its index, it is not a
+pick. For a trend, `get_ownership` returns `history` (every 13F quarter since the end of 2019: managers, shares,
 percent of the company as an upper bound, value) and each 13F holder's `heldSince`; `orEarlier: true` means held since
 the start of that history at least, not bought that quarter.
 
@@ -146,7 +152,9 @@ company's guidance, never analysts' consensus: do not call a gap a "beat" or a "
 an estimate (the release of the same quarter a year earlier, plus 52 weeks), never a date the company announced: say so.
 
 **Daily or weekly brief.** `what_changed` (default: last 7 days, ranked by materiality) plus `get_market_overview`.
-If `what_changed` says the window is not complete, say which period it covers.
+If `what_changed` says the window is not complete (`complete: false`), read the page before with `next.until` as
+`until` — an event at that exact instant can appear on both pages: deduplicate by accession — or say which period the
+answer covers.
 
 **Citing a number.** When a figure matters, call `get_figure_history` and link the permanent page it returns when
 quoting it.
@@ -157,14 +165,16 @@ quoting it.
 - Nothing is estimated or interpolated. A null is unknown: say it is unknown, do not fill it in.
 - Total declared ownership is two bounds, because two managers can report the same shares and the filings do not say
   which. Give the range, never a single number. While a quarter's 13F filings are still being read, the totals are a
-  floor: say so.
+  floor: say so. `coverage.quarterRead` is the quarter of the 13F positions; `latestDeclarationAsOf` is the date of the
+  most recent declaration, never the date of the positions.
 - A move is an event between two declarations of the same kind by the same holder (13F to 13F, 13D/G to 13D/G). A
   Schedule 13D/G marked `below` means the holder fell under 5% and no longer has to report — it is NOT a sale of
   everything: quote the percent it still declared. `crossed` is a first filing above 5%: what it held before is not
   declared. A 13F `exited` means the manager filed its quarterly 13F without the stock. A manager whose 13F line
   contradicts its own share count has no move (`unreadableManagers`): never present it as a seller.
-- Fund holdings (N-PORT) are also inside their manager's 13F: never add the two. Declared options are exposure, not
-  shares, and are never added to holdings.
+- For a listed company, fund holdings (N-PORT) are also inside their manager's 13F: never add the two. A private
+  company's shares are in no 13F: its funds' N-PORT reports are the only filings that declare them. Declared options are
+  exposure, not shares, and are never added to holdings.
 - A person can have two true figures for one company: the shares held (Form 4) and what the SEC counts as theirs
   (Schedule 13D/G, which adds options exercisable within 60 days and unvested shares that carry votes). Say which one
   you quote; `breakdown` gives both and what lies between them. A part marked `undetailed` is what a 13D/G counts
