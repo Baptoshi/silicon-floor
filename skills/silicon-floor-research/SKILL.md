@@ -131,7 +131,8 @@ and the funds that hold it. There is no market price: quote the last funding rou
 carried until the next round, and say it is a round price. The implied value is that price times a share count the
 prospectus files, on two definitions (fully diluted, outstanding): name the one you quote. A `revenueEstimate` for the
 next quarter comes from rounded figures the prospectus states, never from a filed statement: say it is an estimate. What Amazon and Google hold is a floor
-rebuilt from the prospectus, and a fund's mark is that fund's own valuation, not a trade.
+rebuilt from the prospectus, and a fund's mark is that fund's own valuation, not a trade. `priceToSales` is computed at
+the last round's price, and `roundPrices52w` are rounds, not trades: never call either a market multiple or a stock range.
 
 **What a company expects.** `get_financials` with `statement: "outlook"`: `guidance` is the outlook of its latest earnings
 release in its own words (8-K exhibit 99.1; TSMC: its 6-K), each item with the period it targets, its basis (GAAP,
