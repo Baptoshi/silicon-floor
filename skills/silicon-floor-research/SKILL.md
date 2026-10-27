@@ -35,7 +35,7 @@ check with `list_companies` and say plainly when a company is not covered instea
 | Income statement, balance sheet, cash flow over 12 quarters or 6 fiscal years | `get_financials` |
 | Revenue by segment, region or product; the customers a company depends on | `get_financials` (`statement: "breakdowns"`) |
 | What a company guides for next, how it did against its own guidance, when it reports next | `get_financials` (`statement: "outlook"`); `get_company` gives the latest guidance |
-| A private company that filed to go public (Anthropic): its funding rounds, implied value, capital, quarters, commitments to its suppliers, what Amazon and Google hold, fund marks | `get_company` (its name; `preIpo: true`) |
+| A private company that filed to go public (Anthropic): its funding rounds, implied value, capital, quarters, commitments to its suppliers, what Amazon and Google hold, fund marks | `get_company` (its name; `preIpo: true`); its statements: `get_financials` (half years by default); its stockholders and officers: `get_ownership`; its links: `get_relationships` |
 | What a company owes: debt as the balance sheet shows it, instrument by instrument (rate, maturity), and what it borrowed or raised since | `get_company` (`debtComposition`, `financingSinceBalanceSheet`); `get_financials` |
 | One figure over time, with the filing behind each period and any restatement | `get_figure_history` |
 | Several companies side by side | `compare_companies` (2 to 12) |
@@ -127,7 +127,11 @@ is `expired`, left out by default. A bank appears under its group's house (`hold
 `invests_in` link with `instruments` is a named buyer of the company's shares, from the filing that sold them.
 
 **A company before its IPO.** `get_company` with its name (`preIpo: true`, `price: null`) reads its public prospectus
-and the funds that hold it. There is no market price: quote the last funding round's price per common share of today,
+and the funds that hold it; `get_financials` gives the prospectus's statements by the rules of a listed company's (audited
+fiscal years, unaudited quarters and half years — a prospectus files the balance sheet and cash flows by half year and year
+only, hence half years by default); `get_ownership` gives its principal stockholders by class of shares (voting securities
+only, percentages left blank in a preliminary prospectus: never compute one), its officers and directors and its capital
+fully diluted — there are no 13F, 13D/G or Form 4 holders before it lists. There is no market price: quote the last funding round's price per common share of today,
 carried until the next round, and say it is a round price. The implied value is that price times a share count the
 prospectus files, on two definitions (fully diluted, outstanding): name the one you quote. A `revenueEstimate` for the
 next quarter comes from rounded figures the prospectus states, never from a filed statement: say it is an estimate. What Amazon and Google hold is a floor

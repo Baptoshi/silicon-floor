@@ -1,6 +1,6 @@
 {
   "name": "silicon-floor",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A research terminal for AI agents on AI and chip stocks: who owns them, who's buying and selling, and the numbers behind them — every figure linked to its SEC filing.",
   "mcpServers": {
     "siliconfloor": { "httpUrl": "https://siliconfloor.com/mcp" }
