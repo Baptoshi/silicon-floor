@@ -149,6 +149,24 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 | `bridge/`, `package.json` | `siliconfloor-mcp` on npm: a stdio bridge to the hosted server, for clients that expect a command. Zero dependencies; `npm test` covers it. Kept out of `bin/`, which Claude Code would put on its Bash `PATH` and which claude.ai and Cowork refuse to install |
 | `Dockerfile`, `glama.json` | The same bridge as a container, for directories that start a server to read its tools (Glama). It holds no data: every answer comes from the hosted server |
 
+## Changes
+
+Answers only gain fields. When a field changes name or meaning, it is listed here.
+
+- **1.6.0** (October 27, 2026)
+  - `get_ownership`: `asOf` is now `latestDeclarationAsOf`, the date of the most recent declaration on the card; the
+    quarter of the 13F positions is `coverage.quarterRead`. With `moves` set to a list, the answer is that list, its
+    coverage and `next`, without the holders.
+  - `get_ownership` and `get_holders`: a holder's `kind` is replaced by `type` (investment manager, broker-dealer,
+    company or person) and, for a manager, `style` (active, index, market_maker or wealth).
+  - `get_holders`: `move` is the direction of a position, as in `get_ownership`; the change in dollars is
+    `valueChangeUsd`, in shares `sharesChange`, and a manager's net flow `netFlowUsd`.
+  - `what_changed`: `until` and `next.until` read a long window page by page.
+  - `screen_companies`: the sideways trend is `neutral` (`flat` is still accepted). `get_dividends`: certainty and
+    status codes are in English. `get_price_history`: the volume of a session in progress is `null`, not 0.
+
+The same list, kept current, is on [siliconfloor.com/docs/mcp](https://siliconfloor.com/docs/mcp#changes).
+
 ## Data and terms
 
 Sources: SEC EDGAR (XBRL financial statements, IPO prospectuses, Forms 13F, 13D/G, 3/4/5, N-PORT) and FINRA (short interest and
