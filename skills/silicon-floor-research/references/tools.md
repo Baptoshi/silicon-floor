@@ -77,12 +77,12 @@ Returns a company's dividend data: yield, per-share amounts, growth, whether cas
 
 ## get_signals — Technical signals and their historical returns
 
-Returns the rule-based technical signals logged on the tracked companies, with a scorecard of what each signal type returned when replayed over five years (after 1, 5 and 20 sessions, against the SMH sector ETF). Use it when the user asks about recent technical signals or how a signal type has performed historically.
+Returns the rule-based technical signals logged on the tracked companies, newest first (`limit` keeps the most recent; `window` gives the sessions they span), with a scorecard of what each signal type returned when replayed over five years (after 1, 5 and 20 sessions, against the SMH sector ETF). Use it when the user asks about recent technical signals or how a signal type has performed historically.
 
 | Parameter | Required | Meaning |
 |---|---|---|
 | `symbol` | no | Ticker. Omit for the whole universe. |
-| `limit` | no | Signals to return (default 20, max 50). |
+| `limit` | no | Signals to return, the most recent (default 20, max 50). |
 
 ## get_news — News mentioning a tracked company
 
@@ -95,7 +95,7 @@ Returns recent headlines that mention the tracked AI and semiconductor companies
 
 ## what_changed — Events since a date
 
-Returns what was recorded since a date (default 7 days, up to 90): SEC filings accepted, figures a company restated, technical signals, and ownership declarations. By default (`highlights`) ranked by materiality — restatements, earnings, agreements, offerings and sizeable insider purchases first, signals last — with repeats grouped (a company's insider filings of one kind with their total, a manager's 13F); `detail: 'events'` is the raw list, newest first. Use it for a daily or weekly brief, or when the user asks what changed. Price moves are not events here (see get_company). A 13D/G row's `move`: crossed 5%, up, down, below 5% (no longer required to report, not a sale) or out; a 13F row's `moves`: what that manager did since its previous quarter; an amended 13F says so. `complete: false`: the answer is complete after `coversFrom`; pass `next.until` as `until` for the page before (an event at that exact instant can appear on both pages: deduplicate by accession), or pass `symbol`.
+Returns what was recorded since a date (default 7 days, up to 90): SEC filings accepted, figures a company restated, technical signals, and ownership declarations. By default (`highlights`) ranked by materiality — restatements, earnings, agreements, offerings and sizeable insider purchases first, signals last — with repeats grouped (a company's insider filings of one kind with their total, a manager's 13F); `detail: 'events'` is the raw list, newest first. Use it for a daily or weekly brief, or when the user asks what changed. Price moves are not events here (see get_company). A 13D/G row's `move`: crossed 5%, up, down, below 5% (no longer required to report, not a sale) or out; a 13F row's `moves`: what that manager did across these companies since its previous quarter — with `symbol`, `quarterMove` instead: what it did of that company; an amended 13F says so. `complete: false`: the answer is complete after `coversFrom`; pass `next.until` as `until` for the page before (an event at that exact instant can appear on both pages: deduplicate by accession), or pass `symbol`.
 
 | Parameter | Required | Meaning |
 |---|---|---|

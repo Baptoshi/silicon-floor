@@ -153,6 +153,17 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 
 Answers only gain fields. When a field changes name or meaning, it is listed here.
 
+- **1.9.0** (October 28, 2026)
+  - `get_signals` returns the most recent signals first (it kept the oldest of the log); `window` gives the sessions
+    they span and whether older ones remain.
+  - `what_changed` with a `symbol`: a 13F row gives the shares it declares of that company and `quarterMove`, what the
+    manager did of it, instead of its whole portfolio; a `since` in the future is refused as such.
+  - `get_relationships` names the `buyer` and the `seller` (or `target`) of an acquisition; `get_holders` says why a
+    manager has no moves (`flowsNote`) and answers an unknown holder in English.
+  - `compare_companies` says when two entries name one company (`merged`); `get_company` and `compare_companies` say
+    why a margin is empty (`nullReasons`); `get_news` says whether a headline names the company (`namedInTitle`).
+  - Revenue by segment follows a member tagged under two spellings (AMD's fiscal years and fourth quarters are back),
+    and a gross profit filed for some periods is completed for the others where the company's own figures prove it.
 - **1.8.0** (October 28, 2026)
   - `get_company`, `compare_companies`, `screen_companies` add `revenueGrowthTtm`: the last four quarters against the
     four before, steadier than one quarter (or the fiscal year for `basis: fiscal year`); `screen_companies` filters
