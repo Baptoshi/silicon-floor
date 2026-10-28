@@ -17,6 +17,8 @@ When you use it:
   (Schedule 13D/G, which adds options and unvested shares). Say which one you quote.
 - Insider sales and purchases (Form 4 codes S and P) include private ones, and many large sales follow pre-arranged
   trading plans (Rule 10b5-1): don't read intent into a sale.
+- Revenue growth and margins are the latest quarter's (growth against the same quarter a year earlier); `revenueTtm`
+  sums the last four quarters. `basis` says which period each figure covers.
 - Figures filed in another currency stay in that currency. A missing figure is unknown, not zero.
 - A manager's performance is what the AI stocks it declared at the start of each quarter returned, held unchanged:
   not the return of its funds. A change in the value it declares mixes prices and purchases: never call it performance.

@@ -153,6 +153,16 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 
 Answers only gain fields. When a field changes name or meaning, it is listed here.
 
+- **1.7.0** (October 28, 2026)
+  - `get_company`, `compare_companies`, `screen_companies`: `basis` says which period each figure covers — revenue
+    growth and margins are the latest quarter's (growth against the same quarter a year earlier) and `revenueTtm` the
+    last four quarters, or `fiscal year`; `basisMeaning` and each answer's note explain it.
+  - An unknown segment or sector is refused with the list of segments; `what_changed` refuses a blank `since` or
+    `until` and says when a window is moved to its 90-day limit (`windowClamped`); the map of `get_market` for a day
+    without a session is the latest session before it (`requestedDate`).
+  - Companies resolve from a CUSIP or a US or CA ISIN; a misspelled name gets suggestions, never a guess.
+  - `get_financials` lists the periods its columns skip (`missingPeriods`); `get_holders` says in plain words why a
+    manager is not ranked (`notRankedReason`).
 - **1.6.0** (October 27, 2026)
   - `get_ownership`: `asOf` is now `latestDeclarationAsOf`, the date of the most recent declaration on the card; the
     quarter of the 13F positions is `coverage.quarterRead`. With `moves` set to a list, the answer is that list, its

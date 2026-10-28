@@ -181,9 +181,11 @@ quoting it.
   beyond the Form 4 without saying what: never guess it.
 - Filings come with an accession number and a sec.gov link: cite them so the reader can check.
 - A restated figure is flagged: mention it, a restatement is information in itself.
-- A foreign private issuer (TSMC, ASML…) files once a year: its fundamentals are a fiscal year, never trailing twelve
-  months (`basis`). Figures more recent than the annual report may come from its quarterly releases (Form 6-K): they
-  are unaudited, say so.
+- Revenue growth and margins are the latest quarter's — growth against the same quarter a year earlier — and
+  `revenueTtm` sums the last four quarters; `basis` says which period each figure covers. `basis: fiscal year` marks
+  figures of the latest fiscal year, when no four more recent consecutive quarters are filed. A foreign private issuer's
+  quarters after its annual report (TSMC, Nebius…) come from its Form 6-K releases or interim statements: they are
+  unaudited, say so.
 - Figures filed in another currency than the share price stay in that currency and come without ratios, unless the
   company publishes its own dollar translation (the rate then comes with them as `fx`). Never convert on your own.
 - Short interest (positions at a FINRA settlement date) is not short-sale volume (daily trades, market makers

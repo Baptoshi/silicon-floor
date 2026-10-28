@@ -8,7 +8,7 @@ Lists the AI and semiconductor companies tracked by Silicon Floor, with ticker, 
 
 | Parameter | Required | Meaning |
 |---|---|---|
-| `segment` | no | Segment filter: compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform. |
+| `segment` | no | Segment filter: compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform, other. One of: `compute`, `interconnect`, `optics`, `memory`, `systems`, `power`, `neocloud`, `equipment`, `software`, `platform`, `other`. |
 | `query` | no | Substring of a company name or ticker. |
 
 ## get_company — Company snapshot
@@ -33,10 +33,10 @@ Filters the tracked companies on revenue growth, margins, price/sales, market ca
 
 | Parameter | Required | Meaning |
 |---|---|---|
-| `segment` | no | Restrict to one or more segments, comma-separated, e.g. 'compute,memory,equipment,interconnect,optics' (see list_companies). |
-| `minRevenueGrowth` | no | Minimum year-on-year revenue growth, as a fraction (0.4 = 40%). |
-| `minGrossMargin` | no | Minimum gross margin, as a fraction. |
-| `minOperatingMargin` | no | Minimum operating margin, as a fraction. |
+| `segment` | no | Restrict to one or more segments, comma-separated, e.g. 'compute,memory,equipment' — any of: compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform, other. |
+| `minRevenueGrowth` | no | Minimum revenue growth of the latest quarter against the same quarter a year earlier (a fiscal year for `basis` 'fiscal year'), as a fraction (0.4 = 40%). |
+| `minGrossMargin` | no | Minimum gross margin of the latest quarter, as a fraction. |
+| `minOperatingMargin` | no | Minimum operating margin of the latest quarter, as a fraction. |
 | `maxPriceToSales` | no | Maximum price / sales. |
 | `minMarketCap` | no | Minimum market capitalisation, in dollars. |
 | `trend` | no | Only companies in this trend: 'up' (price above its 50-day and 200-day averages, the 50-day above the 200-day), 'down' (the reverse), 'neutral' (neither; 'flat' is accepted for it). One of: `up`, `down`, `neutral`, `flat`. |
@@ -98,7 +98,7 @@ Returns what was recorded since a date (default 7 days, up to 90): SEC filings a
 
 | Parameter | Required | Meaning |
 |---|---|---|
-| `since` | no | ISO date or timestamp to look back from (default: 7 days ago, maximum 90 days). |
+| `since` | no | ISO date or timestamp to look back from (default: 7 days ago). At most 90 days back: an older date is moved to that limit and `window.windowClamped` says so. |
 | `until` | no | ISO date or timestamp to read up to, included (default: now). Pass the previous answer's `next.until` to read the next page. |
 | `symbol` | no | Restrict to one ticker. Omit for the whole universe. |
 | `detail` | no | 'highlights' (default): ranked, grouped summary of the window. 'events': the raw list, newest first. One of: `highlights`, `events`. |
@@ -114,10 +114,10 @@ Returns the tracked companies as one market over time: combined market cap, the 
 
 | Parameter | Required | Meaning |
 |---|---|---|
-| `view` | no | 'series' (default): totals and their breakdown over time. 'map': one session, company by company. |
-| `range` | no | Series: 1m, 3m, 6m, 1y (default) or 5y (weekly points). |
-| `sector` | no | Series: 'all' (default) breaks the universe down by segment; a segment id — compute, platform, software, power, memory, equipment, interconnect, systems, neocloud, optics, other — breaks that segment down by company. |
-| `date` | no | Map: a session date (YYYY-MM-DD) among the last 40; default the latest. |
+| `view` | no | 'series' (default): totals and their breakdown over time. 'map': one session, company by company. One of: `series`, `map`. |
+| `range` | no | Series: 1m, 3m, 6m, 1y (default) or 5y (weekly points). One of: `1m`, `3m`, `6m`, `1y`, `5y`. |
+| `sector` | no | Series: 'all' (default) breaks the universe down by segment; a segment id — compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform, other — breaks that segment down by company. One of: `all`, `compute`, `interconnect`, `optics`, `memory`, `systems`, `power`, `neocloud`, `equipment`, `software`, `platform`, `other`. |
+| `date` | no | Map: a session date (YYYY-MM-DD) among the last 40; default the latest. A day without a session gives the latest session before it (`requestedDate` says so). |
 | `points` | no | Series: keep at most this many points, evenly spaced from the end (default 60, max 400). |
 
 ## get_holders — Holdings of an investor, fund or person
@@ -139,8 +139,8 @@ Returns the relationship graph around a company, an investment house or a person
 | Parameter | Required | Meaning |
 |---|---|---|
 | `center` | yes | The company, house or person at the center: a ticker, a company name (listed or not: 'Anthropic'), a holder's key or name ('vanguard', 'Elon Musk'), or a typed id from a previous answer (company:nvda, holder:vanguard, person:<id>, gov:us). |
-| `view` | no | Which relationships (default 'all'). One of: `all`, `capital`, `value_chain`, `governance`, `competition`. |
-| `natures` | no | Comma-separated natures within the view: owns, invests_in, holds_rights_in, insider_of, customer_of, supplier_of, agreement_with, acquired, competes_with, lends_to. |
+| `view` | no | Which relationships (default 'all'): capital (owns, invests_in, holds_rights_in), value_chain (customer_of, agreement_with, acquired, lends_to: who buys, sells, merges with and lends to whom), governance (insider_of), competition (competes_with). One of: `all`, `capital`, `value_chain`, `governance`, `competition`. |
+| `natures` | no | Comma-separated natures within the view: owns, invests_in, holds_rights_in, insider_of, customer_of, agreement_with, acquired, lends_to. supplier_of and competes_with are declared but have no source yet: a company's suppliers are the `to` end of customer_of relationships whose `from` is that company. |
 | `depth` | no | 1 (default): the center's relationships; 2: its neighbours' too. One of: `1`, `2`. |
 | `since` | no | Only relationships whose proving filing is dated on or after this day (YYYY-MM-DD). |
 | `minShare` | no | Minimum share of capital, as a fraction (0.01 = 1%), for ownership relationships. |
