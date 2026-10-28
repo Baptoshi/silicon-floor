@@ -153,6 +153,14 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 
 Answers only gain fields. When a field changes name or meaning, it is listed here.
 
+- **1.8.0** (October 28, 2026)
+  - `get_company`, `compare_companies`, `screen_companies` add `revenueGrowthTtm`: the last four quarters against the
+    four before, steadier than one quarter (or the fiscal year for `basis: fiscal year`); `screen_companies` filters
+    on it (`minRevenueGrowthTtm`) and sorts by it.
+  - `get_holders` says how many positions a holder has (`positionsTotal`) and when the answer is cut
+    (`positionsTruncated`); `get_financials` flags large non-operating items (`nonOperating`).
+  - The map of `get_market` refuses a date before the sessions it keeps instead of returning the first one;
+    `what_changed` says when a whole window lies beyond its 90 days.
 - **1.7.0** (October 28, 2026)
   - `get_company`, `compare_companies`, `screen_companies`: `basis` says which period each figure covers — revenue
     growth and margins are the latest quarter's (growth against the same quarter a year earlier) and `revenueTtm` the

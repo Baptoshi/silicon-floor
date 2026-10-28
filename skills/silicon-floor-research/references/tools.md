@@ -35,12 +35,13 @@ Filters the tracked companies on revenue growth, margins, price/sales, market ca
 |---|---|---|
 | `segment` | no | Restrict to one or more segments, comma-separated, e.g. 'compute,memory,equipment' — any of: compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform, other. |
 | `minRevenueGrowth` | no | Minimum revenue growth of the latest quarter against the same quarter a year earlier (a fiscal year for `basis` 'fiscal year'), as a fraction (0.4 = 40%). |
+| `minRevenueGrowthTtm` | no | Minimum revenue growth over the trailing twelve months (the last four quarters against the four before; a fiscal year for `basis` 'fiscal year'), as a fraction. |
 | `minGrossMargin` | no | Minimum gross margin of the latest quarter, as a fraction. |
 | `minOperatingMargin` | no | Minimum operating margin of the latest quarter, as a fraction. |
 | `maxPriceToSales` | no | Maximum price / sales. |
 | `minMarketCap` | no | Minimum market capitalisation, in dollars. |
 | `trend` | no | Only companies in this trend: 'up' (price above its 50-day and 200-day averages, the 50-day above the 200-day), 'down' (the reverse), 'neutral' (neither; 'flat' is accepted for it). One of: `up`, `down`, `neutral`, `flat`. |
-| `sortBy` | no | Sort key (default marketCap). One of: `marketCap`, `revenueGrowthYoy`, `grossMargin`, `operatingMargin`, `priceToSales`, `ytd`, `day`. |
+| `sortBy` | no | Sort key (default marketCap). One of: `marketCap`, `revenueGrowthYoy`, `revenueGrowthTtm`, `grossMargin`, `operatingMargin`, `priceToSales`, `ytd`, `day`. |
 | `limit` | no | Rows to return (default 25, max 100). |
 
 ## get_ownership — Shareholders of a company
@@ -117,7 +118,7 @@ Returns the tracked companies as one market over time: combined market cap, the 
 | `view` | no | 'series' (default): totals and their breakdown over time. 'map': one session, company by company. One of: `series`, `map`. |
 | `range` | no | Series: 1m, 3m, 6m, 1y (default) or 5y (weekly points). One of: `1m`, `3m`, `6m`, `1y`, `5y`. |
 | `sector` | no | Series: 'all' (default) breaks the universe down by segment; a segment id — compute, interconnect, optics, memory, systems, power, neocloud, equipment, software, platform, other — breaks that segment down by company. One of: `all`, `compute`, `interconnect`, `optics`, `memory`, `systems`, `power`, `neocloud`, `equipment`, `software`, `platform`, `other`. |
-| `date` | no | Map: a session date (YYYY-MM-DD) among the last 40; default the latest. A day without a session gives the latest session before it (`requestedDate` says so). |
+| `date` | no | Map: a session date (YYYY-MM-DD) among the last 40; default the latest. A day without a session gives the latest session before it (`requestedDate` says so); a date before the sessions kept is refused. |
 | `points` | no | Series: keep at most this many points, evenly spaced from the end (default 60, max 400). |
 
 ## get_holders — Holdings of an investor, fund or person
@@ -130,7 +131,7 @@ Returns what investors hold in the tracked AI and semiconductor companies, from 
 | `list` | no | Without `holder`: 'largest' (default), 'investors' (universe companies filing 13F), 'buyers' or 'sellers' (by net move), 'declarants' (Schedule 13D/G holders filing no 13F), 'individuals' (people, from their 13D/G), 'performance' (active managers ranked by the return of their declared AI-stock portfolio). One of: `largest`, `investors`, `buyers`, `sellers`, `declarants`, `individuals`, `performance`. |
 | `period` | no | With list 'performance': 'quarter' (default: the last completed quarter), 'year', '3y' or '5y' — quarterly returns chained. One of: `quarter`, `year`, `3y`, `5y`. |
 | `order` | no | With list 'performance': 'best' (default: highest return first) or 'worst' (lowest first). One of: `best`, `worst`. |
-| `limit` | no | Rows to return (default 25, max 100). |
+| `limit` | no | Rows to return (default 25, max 100): ranked holders, or one holder's positions — `positionsTotal` and `positionsTruncated` say how many it has. |
 
 ## get_relationships — Relationships between companies, investors and people
 

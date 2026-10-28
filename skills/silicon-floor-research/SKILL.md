@@ -182,7 +182,8 @@ quoting it.
 - Filings come with an accession number and a sec.gov link: cite them so the reader can check.
 - A restated figure is flagged: mention it, a restatement is information in itself.
 - Revenue growth and margins are the latest quarter's — growth against the same quarter a year earlier — and
-  `revenueTtm` sums the last four quarters; `basis` says which period each figure covers. `basis: fiscal year` marks
+  `revenueTtm` sums the last four quarters; `revenueGrowthTtm` compares them with the four before, steadier than one
+  quarter. `basis` says which period each figure covers. `basis: fiscal year` marks
   figures of the latest fiscal year, when no four more recent consecutive quarters are filed. A foreign private issuer's
   quarters after its annual report (TSMC, Nebius…) come from its Form 6-K releases or interim statements: they are
   unaudited, say so.

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "silicon-floor",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "A research terminal for AI agents on AI and chip stocks: who owns them, who buys, sells and lends, the numbers behind them, and AI companies before their IPO — every figure linked to its SEC filing.",
   "author": { "name": "Silicon Floor", "url": "https://siliconfloor.com" },
   "homepage": "https://siliconfloor.com/docs/mcp",

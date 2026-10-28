@@ -3,7 +3,7 @@
   "name": "com.siliconfloor/silicon-floor",
   "title": "Silicon Floor",
   "description": "AI & chip stocks for agents: who owns, buys, sells, lends — pre-IPOs too, straight from SEC filings.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "websiteUrl": "https://siliconfloor.com/docs/mcp",
   "repository": {
     "url": "https://github.com/Baptoshi/silicon-floor",
