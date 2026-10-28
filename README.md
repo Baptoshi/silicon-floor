@@ -153,6 +153,11 @@ Their full reference is in [`skills/silicon-floor-research/references/tools.md`]
 
 Answers only gain fields. When a field changes name or meaning, it is listed here.
 
+- **1.10.0** (October 28, 2026)
+  - `get_signals`: `window` adds `total`, how many signals the log holds for the request whatever the `limit`, and
+    `loggedSince`, the first session it holds (the five-year figures are the replayed scorecard).
+  - Tool descriptions are shorter (about 9,900 characters for the 19 tools, from 13,500): how to read each answer is in
+    its `howToRead` or `notes`, now in `get_holders`, `what_changed` and `get_market` too.
 - **1.9.0** (October 28, 2026)
   - `get_signals` returns the most recent signals first (it kept the oldest of the log); `window` gives the sessions
     they span and whether older ones remain.
