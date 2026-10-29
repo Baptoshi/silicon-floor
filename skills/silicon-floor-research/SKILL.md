@@ -39,6 +39,7 @@ check with `list_companies` and say plainly when a company is not covered instea
 | Income statement, balance sheet, cash flow over 12 quarters or 6 fiscal years | `get_financials` |
 | Revenue by segment, region or product; the customers a company depends on | `get_financials` (`statement: "breakdowns"`) |
 | What a company guides for next, how it did against its own guidance, when it reports next | `get_financials` (`statement: "outlook"`); `get_company` gives the latest guidance |
+| A quarter a company just announced, before its 10-Q is filed | `get_financials` or `get_company` (`announcedQuarter`: unaudited, each line proven by the release's column for the same quarter last year) |
 | A private company that filed to go public (Anthropic): its funding rounds, implied value, capital, quarters, commitments to its suppliers, what Amazon and Google hold, fund marks | `get_company` (its name; `preIpo: true`); its statements: `get_financials` (half years by default); its stockholders and officers: `get_ownership`; its links: `get_relationships` |
 | What a company owes: debt as the balance sheet shows it, instrument by instrument (rate, maturity), and what it borrowed or raised since | `get_company` (`debtComposition`, `financingSinceBalanceSheet`); `get_financials` |
 | One figure over time, with the filing behind each period and any restatement | `get_figure_history` |
